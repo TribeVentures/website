@@ -179,8 +179,9 @@ fieldset {
 }
 .navbar-brand { padding: 7px }
 .navbar-brand img {
-    height: 35px;
-    width: 135px;
+    height: 60px;
+    width: 160px;
+    margin-top: -12px;
 }
 .navbar-default .navbar-nav>li>a {
     font-size: 12px;
@@ -213,7 +214,7 @@ fieldset {
 .navbar-default.menu-shrink {
     background-color: rgba(0,0,0,0.9);
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
+    padding: 15px 0;
     width: 100%;
 }
 @media only screen and (max-width:480px) { 
@@ -274,8 +275,7 @@ color: #fff;
 font-size: 18px;
 line-height: 18px;
 padding: 15px 40px;
-text-transform: uppercase;
-}
+text-transform: uppercase;}
 @media only screen and (max-width:360px) { 
     .btn-home-bg { padding: 15px 20px }
 }
