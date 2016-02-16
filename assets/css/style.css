@@ -72,6 +72,11 @@ fieldset {
     top: 0;
     z-index: 9999;
 }
+.tribeventures {
+    margin:auto;
+    padding-top: 8%;
+    padding-bottom: 4%
+}
 .status,
 .status-mes {
     background-image: url(../img/status.gif);
