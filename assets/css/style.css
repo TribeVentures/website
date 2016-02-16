@@ -205,19 +205,19 @@ fieldset {
     }
 }
 @media only screen and (max-width:480px) { 
-    .menu-top { background-color: rgba(17, 76, 56, 0.9); }
+    .menu-top { background-color: rgba(17, 76, 56, 1); }
     .navbar-default .navbar-nav > li > a { color: #fff !important }
 }
 @media only screen and (max-width:360px) { 
-    .menu-top { background-color: rgba(17, 76, 56, 0.9); }
+    .menu-top { background-color: rgba(17, 76, 56, 1); }
     .navbar-default .navbar-nav > li > a { color: #fff !important }
 }
 @media only screen and (max-width:320px) { 
-    .menu-top { background-color: rgba(17, 76, 56, 0.9); }
+    .menu-top { background-color: rgba(17, 76, 56, 1); }
     .navbar-default .navbar-nav > li > a { color: #fff !important }
 }
 .navbar-default.menu-shrink {
-    background-color: rgba(17, 76, 56, 0.9);
+    background-color: rgba(17, 76, 56, 1);
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
     padding: 15px 0;
     width: 100%;
