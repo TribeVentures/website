@@ -205,19 +205,19 @@ fieldset {
     }
 }
 @media only screen and (max-width:480px) { 
-    .menu-top { background-color: rgba(0,0,0,0.9) }
+    .menu-top { background-color: rgba(17, 76, 56, 0.9); }
     .navbar-default .navbar-nav > li > a { color: #fff !important }
 }
 @media only screen and (max-width:360px) { 
-    .menu-top { background-color: rgba(0,0,0,0.9) }
+    .menu-top { background-color: rgba(17, 76, 56, 0.9); }
     .navbar-default .navbar-nav > li > a { color: #fff !important }
 }
 @media only screen and (max-width:320px) { 
-    .menu-top { background-color: rgba(0,0,0,0.9) }
+    .menu-top { background-color: rgba(17, 76, 56, 0.9); }
     .navbar-default .navbar-nav > li > a { color: #fff !important }
 }
 .navbar-default.menu-shrink {
-    background-color: rgba(17, 76, 56, 0.8);
+    background-color: rgba(17, 76, 56, 0.9);
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
     padding: 15px 0;
     width: 100%;
@@ -430,6 +430,7 @@ text-transform: uppercase;}
 .team h4 {
     margin-top: 10px;
     text-transform: uppercase;
+    white-space: nowrap
 }
 .team img { width: 100% }
 .team_social_icon {
@@ -450,12 +451,13 @@ text-transform: uppercase;}
     color: #fff;
     display: block;
     font-size: 18px;
-    height: 45px;
+    height: 30px;
+    width: 30px;
     line-height: 21px;
-    padding: 10px 13px;
+    padding: 4px 4px;
     -webkit-transition: all 0.4s ease 0s;
             transition: all 0.4s ease 0s;
-    width: 45px;
+    
 }
 .team_social_icon ul li a i { width: 20px }
 .team_social_icon ul li a:hover {
