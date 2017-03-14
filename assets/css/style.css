@@ -493,6 +493,10 @@ text-transform: uppercase;}
     background: #40BFF5;
     border: 1px solid #40BFF5;
 }
+.stree {
+    background: #0ea284;
+    border: 1px solid #0ea284;
+}
 .url {
     background: #F4C95D;
     border: 1px solid #F4C95D;
@@ -1338,6 +1342,11 @@ ul.blog_pagination li a:hover {
     background: #EB5E4C;
     box-shadow: 0 2px 0 0 #EB5E4C;
     border: 1px solid #EB5E4C;
+}
+.f_stree:hover {
+    background: #0ea284;
+    box-shadow: 0 2px 0 0 #0ea284;
+    border: 1px solid #0ea284;
 }
 .f_linkedin:hover {
     background: #238CC8;
