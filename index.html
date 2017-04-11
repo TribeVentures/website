@@ -70,6 +70,7 @@
 						<li><a href="#why_choose">why</a></li>
 						<li><a href="#team">team</a></li>						
 						<li><a href="#events">events</a></li>
+						<li><a href="#funds">funds</a></li>
 						<li><a href="#center">center</a></li>	
 						<!-- <li><a href="bmc">BMC</a></li>					 -->
 					</ul>
@@ -84,7 +85,7 @@
 				<div class="container">
 					<div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
 						<div class="hero-text wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-							<img class="img-responsive tribeventures"src="assets/img/tribe.png">
+							<img class="img-responsive tribeventures" src="assets/img/tribe.png">
 							
 							<!-- <p>Undergraduate Entrepreneurship at W&amp;M</p> -->	
 							<a href="#more" class="btn btn-default btn-home-bg" href="">Learn more</a>
@@ -356,6 +357,34 @@
 		<!-- END BLOG -->
 
 		<!-- START WHO WE ARE -->
+		<section id="funds" class="who-we-are center section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="single_who" style="margin-top:70px;">
+							<video id="myVideo" controls loop="true" poster="assets/videos/thumbnail.png" width="550" height="311">
+						   		<source src="assets/videos/fund.mp4" type="video/mp4">
+						   		Your browser does not support the video tag.
+							</video>
+						</div>
+
+					</div><!--- END COL -->
+					<div class="col-md-6 col-sm-6">
+						<div class="single_who">
+							<h2>Student Venture Funds</h2>
+							<p>Student Venture Funds are a catalyst to help student ventures move beyond the idea stage. A couple hundred dollars can mean the difference between an idea staying just an idea or becoming something much more. From validating customers to testing assumptions, there is a point when great student ideas need a small amount of capital to proceed. Whether a student venture becomes a successful endeavor or a learning experience, there is immense value in taking a step forward. Funds raised through this campaign will be allocated to student ventures through an application process managed by a committee comprising the Entrepreneurship Center and key stakeholders in the W&M entrepreneurial ecosystem. In addition to the funding, student ventures will get support, mentorship, and connections through the Alan B. Miller Entrepreneurship Center.</p>
+
+							<p>We're currently raising a crowdfunding campaign - Learn more below!</p>
+							<a href="http://gvcmp.us/n5f9f3" target="_blank" class="btn btn-default btn-light-bg">Donate now</a>
+						</div>
+					</div>
+					
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END  WHO WE ARE -->
+
+		<!-- CENTER -->
 		<section id="center" class="who-we-are center section-padding">
 			<div class="container">
 				<div class="row">
@@ -376,7 +405,7 @@
 				</div><!--- END ROW -->
 			</div><!--- END CONTAINER -->
 		</section>
-		<!-- END  WHO WE ARE -->
+		<!-- CENTER -->
 		
 		<!-- START COMPANY LOGO -->
 		<div class="company_logo section-padding">
@@ -451,7 +480,7 @@
 		<!-- END FOOTER -->			
 			
 		<!-- Latest jQuery -->
-        <script src="assets/js/jquery-1.11.3.min.js"></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 		<!-- Latest compiled and minified Bootstrap -->
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<!-- countTo js -->
@@ -481,6 +510,37 @@
 			}
 		});
 		/* End Portfolio pop up */
+		</script>
+		<script>
+			var videos = document.getElementsById("myVideo"),
+			fraction = 0.8;
+			function checkScroll() {
+
+			    for(var i = 0; i < videos.length; i++) {
+
+			        var video = videos[i];
+
+			        var x = video.offsetLeft, y = video.offsetTop, w = video.offsetWidth, h = video.offsetHeight, r = x + w, //right
+			            b = y + h, //bottom
+			            visibleX, visibleY, visible;
+
+			            visibleX = Math.max(0, Math.min(w, window.pageXOffset + window.innerWidth - x, r - window.pageXOffset));
+			            visibleY = Math.max(0, Math.min(h, window.pageYOffset + window.innerHeight - y, b - window.pageYOffset));
+
+			            visible = visibleX * visibleY / (w * h);
+
+			            if (visible > fraction) {
+			                video.play();
+			            } else {
+			                video.pause();
+			            }
+
+			    }
+
+			}
+
+			window.addEventListener('scroll', checkScroll, false);
+			window.addEventListener('resize', checkScroll, false);
 		</script>
 		<!--  Google Analytics Tracking -->
 		<script>
