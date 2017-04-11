@@ -845,6 +845,7 @@ color: #333;
 }
 .blog-post .post-img {
     position: relative;
+    height: 200px;
     overflow: hidden;
 }
 .blog-post .post-img img { width: 100% }
@@ -862,6 +863,35 @@ color: #333;
     font-size: 14px;
 }
 .blog-post .post-info li .date {
+    background: #115740 none repeat scroll 0 0;
+    color: #fff;
+    float: right;
+    font-size: 16px;
+    padding: 5px 10px 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: -14px;
+    width: 58px;
+}
+.tag{
+    display: inline-block;
+    border: #B9975B;
+    /*background-color: #B9975B;*/
+    padding: 7px;
+    color: white;
+    margin-left: 10px;
+}
+
+.blog-post .post-bt li {
+    display: inline-block;
+    margin-right: 20px;
+}
+.blog-post .post-bt li i {
+    margin-right: 10px;
+    font-size: 14px;
+}
+.blog-post li .date {
     background: #115740 none repeat scroll 0 0;
     color: #fff;
     float: right;
