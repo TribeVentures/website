@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+        .mapboxgl-popup {
+		  max-width: 200px;
+		}
+
+		.mapboxgl-popup-content {
+		  text-align: center;
+		  font-family: 'Open Sans', sans-serif;
+		}
+		.marker {
+		  background-image: url('assets/img/map/green_marker.png');
+		  background-size: cover;
+		  width: 25px;
+		  height: 33px;
+		  /*border-radius: 50%;*/
+		  cursor: pointer;
+		}
+		#logo {
+		  background-image: url('assets/img/map/miller.png');
+		  background-size: cover;
+		  position: fixed;
+		  bottom:35px;
+		  left:30px;
+		  width: 200px;
+		  height: 50px;
+		  cursor: pointer;
+		}
+		#more {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			padding:10px;
+			background-color:#115740;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+		}
+    </style>
+</head>
+<body>
+
+<style>
+    .mapboxgl-popup {
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+</style>
+<div id='map'></div>
+<div id='logo'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiY3Rob3lsZSIsImEiOiJjaXIyMWRmZ2UwMDAwenZrcXR2eHE4c2tmIn0.H457fh_sSEbaBzIBskg6yQ';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: [-98, 38.8],
+    zoom: 4
+});
+
+var geojson = {
+  type: 'FeatureCollection',
+  "features": [{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-97.654724, 30.210768]
+                },
+                "properties": {
+                    "title": "Press8",
+                    "logo":"press8.png",
+                    "link":"https://www.press8.com/",
+                    "founder":"Martin Field",
+                    "industry":"Communications Software",
+                    "description":"Cost saving telecom solutions for small business",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            }, {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-71.022362, 42.366978]
+                },
+                "properties": {
+                    "title": "Audiocasefiles",
+                    "logo":"Audiocase.png",
+                    "link":"https://angel.co/audiocasefiles",
+                    "founder":"Stephen Svajian",
+                    "industry":"Legal",
+                    "description":"AudioCaseFiles, co-founded by Stephen Svajian and James Patterson, was acquired in 2008.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-71.023362, 42.368978]
+                },
+                "properties": {
+                    "title": "Realagogo",
+                    "logo":"realagogo.jpg",
+                    "link":"https://www.crunchbase.com/organization/realagogo",
+                    "founder":"Mark Holt",
+                    "industry":"Real Estate Tech",
+                    "description":"provides real estate solutions for buyers, sellers, agents & more.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-80.8431, 35.2271]
+                },
+                "properties": {
+                    "title": "ithermodyne",
+                    "logo":"ithermodyne.png",
+                    "link":"http://www.ithermodyne.com/",
+                    "founder":"Paul Solitario",
+                    "industry":"Clean Energy",
+                    "description":"reinventing energy",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-78.50798, 38.033554]
+                },
+                "properties": {
+                    "title": "SceneThink",
+                    "logo":"scenethink.png",
+                    "link":"http://scenethink.com/",
+                    "founder":"Michael Holroyd",
+                    "industry":"Entertainment",
+                    "description":"A next generation event listings platform",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-78.50598, 38.034554]
+                },
+                "properties": {
+                    "title": "LearnStream",
+                    "logo":"LearnStream.jpg",
+                    "link":"https://www.learnstream.com/",
+                    "founder":"Michael Holroyd",
+                    "industry":"Edtech",
+                    "description":"Crowd-sourced online learning and teaching",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-87.623177, 41.881832]
+                },
+                "properties": {
+                    "title": "Wedmony",
+                    "logo":"Wedmony.png",
+                    "link":"https://angel.co/wedmony",
+                    "founder":"Christina Hecker",
+                    "industry":"Events planning",
+                    "description":"Digitally Structuring Wedding Planning",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-87.623377, 41.885832]
+                },
+                "properties": {
+                    "title": "Popular Pays",
+                    "logo":"popularpays.jpg",
+                    "link":"http://www.popularpays.com/",
+                    "founder":"Corbett Drummey",
+                    "industry":"Mobile Advertising",
+                    "description":"A marketplace where brands and creators meet to create content worth sharing.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-111.850769, 40.391617]
+                },
+                "properties": {
+                    "title": "Boomvox",
+                    "logo":"boomvox.jpg",
+                    "link":"http://boomvox.io/",
+                    "founder":"Grant Smith",
+                    "industry":"Entertainment",
+                    "description":"The second screen for live music",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.243693, 34.052135]
+                },
+                "properties": {
+                    "title": "The Mighty",
+                    "logo":"themighty.png",
+                    "link":"https://themighty.com",
+                    "founder":"Mike Porath",
+                    "industry":"Digital Media",
+                    "description":"Sharing life's greatest challenges",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.243689, 34.051235]
+                },
+                "properties": {
+                    "title": "SocialVents",
+                    "logo":"socialvents.png",
+                    "link":"https://angel.co/socialvents",
+                    "founder":"Kevin Tabatabai",
+                    "industry":"Event Management",
+                    "description":"Discover events and cool things to do around you in real-time.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.244683, 34.053235]
+                },
+                "properties": {
+                    "title": "Snap2",
+                    "logo":"snap2.png",
+                    "link":"https://angel.co/snap2",
+                    "founder":"Kevin Tabatabai",
+                    "industry":"Photo Sharing",
+                    "description":"Photo Steganography",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.243783, 34.052135]
+                },
+                "properties": {
+                    "title": "Vytmn",
+                    "logo":"vytmn.png",
+                    "link":"https://angel.co/vytmn",
+                    "founder":"Hank Leber",
+                    "industry":"Marketing",
+                    "description":"Growth as a Service",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.243693, 34.051135]
+                },
+                "properties": {
+                    "title": "Digital Whisper",
+                    "logo":"digitalwhisper.png",
+                    "link":"http://www.digitalwhisper.co/",
+                    "founder":"Angela Gyetvan",
+                    "industry":"Brand Marketing",
+                    "description":"Strategies for a binary age",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.243593, 34.052135]
+                },
+                "properties": {
+                    "title": "ClearSummit",
+                    "logo":"clearsummit.png",
+                    "link":"http://clearsumm.it/",
+                    "founder":"Kara McGehee",
+                    "industry":"Design Tech",
+                    "description":"Building innovative and fun products for ourselves and hire",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.243483, 34.052035]
+                },
+                "properties": {
+                    "title": "Musea",
+                    "logo":"musea.jpg",
+                    "link":"http://getmusea.com/",
+                    "founder":"Kara McGehee",
+                    "industry":"Travel",
+                    "description":"PaaS for Museums",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-89.377808, 43.053619]
+                },
+                "properties": {
+                    "title": "gameFI",
+                    "link":"http://www.gamefi.org/",
+                    "logo":"gamefl.png",
+                    "founder":"Matt Davis",
+                    "industry":"Financial Services",
+                    "description":"Gamified employee engagement platform",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.1817, 37.4530]
+                },
+                "properties": {
+                    "title": "Fast Orientation",
+                    "logo":"fastorientation.png",
+                    "link":"http://www.fastorientation.com/",
+                    "founder":"Sam Small",
+                    "industry":"Enterprise Security",
+                    "description":"Enterprise situation awareness for everyone",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.083855, 37.386051]
+                },
+                "properties": {
+                    "title": "Gabzooks",
+                    "logo":"Gabzooks.png",
+                    "link":"https://angel.co/gabzooks",
+                    "founder":"Tripp Millican",
+                    "industry":"Social Media",
+                    "description":"Private group communication.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-76.2859, 36.8508]
+                },
+                "properties": {
+                    "title": "EdConnective",
+                    "logo":"edconnective.jpeg",
+                    "link":"http://www.edconnective.com/",
+                    "founder":"Marcus Singleton",
+                    "industry":"Edtech",
+                    "description":"Online observation and virtual coaching for teachers",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.935242, 40.730610]
+                },
+                "properties": {
+                    "title": "Basq",
+                    "logo":"",
+                    "link":"https://google.com",
+                    "founder":"Ryan Mtzger",
+                    "industry":"Edtech",
+                    "description":"",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.935222, 40.730660]
+                },
+                "properties": {
+                    "title": "Zairge",
+                    "logo":"zairge.png",
+                    "link":"https://www.crunchbase.com/organization/zairge",
+                    "founder":"Dan Otto, Erica Amatori, Ronak Patel, Caleb Severn",
+                    "industry":"Saas",
+                    "description":"A mobile property management system that simplifies and accelerates productivity for the owner, employee and guest.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.935248, 40.730614]
+                },
+                "properties": {
+                    "title": "Adhawk",
+                    "logo":"adhawk.png",
+                    "link":"https://www.tryadhawk.com/",
+                    "founder":"Todd Saunders",
+                    "industry":"Adtech",
+                    "description":"AdHawk aggregates a company's total digital marketing data, and offers advertisers one-click optimization solutions.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.925242, 40.740610]
+                },
+                "properties": {
+                    "title": "Slingshot Insights",
+                    "logo":"Slingshot.png",
+                    "link":"https://slingshotinsights.com/",
+                    "founder":"Colleen Tepe",
+                    "industry":"Fintech",
+                    "description":"Crowdfunded primary source investment research",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.935342, 40.731610]
+                },
+                "properties": {
+                    "title": "Pinata",
+                    "logo":"pinata.png",
+                    "link":"http://pinata.nyc/",
+                    "founder":"Fred Kunda",
+                    "industry":"Brand Marketing",
+                    "description":"On-Demand Field Staffing",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.935252, 40.730620]
+                },
+                "properties": {
+                    "title": "Ethikus",
+                    "logo":"ethikus.png",
+                    "link":"http://www.ethikus.com/",
+                    "founder":"Jeff Hittner",
+                    "industry":"Sustainability",
+                    "description":"digital & offline ethical consumer movement in NYC",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.935249, 40.730619]
+                },
+                "properties": {
+                    "title": "Blazetrak",
+                    "logo":"blazetrack.jpg",
+                    "link":"https://www.blazetrak.com/",
+                    "founder":"Ron Harrison",
+                    "industry":"Entertainment",
+                    "description":"Blazetrak provides direct video responses from music industry professionals",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }////////////////////////
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.6367, 38.2324]
+                },
+                "properties": {
+                    "title": "Brandle",
+                    "logo":"brandle.png",
+                    "link":"http://www.brandle.net/",
+                    "founder":"Chip Roberson",
+                    "industry":"Brand Marketing",
+                    "description":"Online Brand Presence Management and Verification",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.205963, 40.071899]
+                },
+                "properties": {
+                    "title": "SmallBusinessFunding.com",
+                    "logo":"smallbusiness.png",
+                    "link":"http://SmallBusinessFunding.com",
+                    "founder":"Steve Shaifer",
+                    "industry":"Fintech",
+                    "description":"Small Business Funding is a premier online funding service providing access to safe, fair, and competitive business advances.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-75.205953, 40.071889]
+                },
+                "properties": {
+                    "title": "MilkCrate",
+                    "logo":"milkcrate.jpg",
+                    "link":"http://mymilkcrate.com/",
+                    "founder":"Morgan Berman",
+                    "industry":"Sustainability",
+                    "description":"Closing the gap between good intentions and sustainable action.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-78.644257, 35.787743]
+                },
+                "properties": {
+                    "title": "Mapmycustomer",
+                    "logo":"mapmycustomer.png",
+                    "link":"https://www.mapmycustomers.me/",
+                    "founder":"Matthew Sniff",
+                    "industry":"Saas, CRM",
+                    "description":"Map My Customers is your personal sales sidekick. We give you the most powerful suite of sales tools to guarantee you'll conquer your territory.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-77.356239, 38.944122]
+                },
+                "properties": {
+                    "title": "Athena's Workshop",
+                    "logo":"athenas.png",
+                    "link":"http://www.athenasworkshop.com/",
+                    "founder":"Helen Levy-Myers",
+                    "industry":"Edtech",
+                    "description":"Solve Chronic Absenteeism with texting",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-77.511429, 37.646152]
+                },
+                "properties": {
+                    "title": "Confluence",
+                    "logo":"confluence.png",
+                    "link":"http://confluencecoffeeco.com/",
+                    "founder":"Terry Darcy",
+                    "industry":"Beverage",
+                    "description":"Organic and Fair Trade coffee, ready-to-drink.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-77.511529, 37.645852]
+                },
+                "properties": {
+                    "title": "Speakeasy",
+                    "logo":"speakeasy.png",
+                    "link":"http://www.rvaspeakeasy.com/",
+                    "founder":"Jon Davidow",
+                    "industry":"Customer Service",
+                    "description":"LinkedIn Endorsements meets Get Satisfaction for retail & restaurants.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.446747, 37.733795]
+                },
+                "properties": {
+                    "title": "Anova culinary",
+                    "logo":"anova.png",
+                    "link":"https://anovaculinary.com/",
+                    "founder":"Stephen Svajian",
+                    "industry":"Consumer Electronics",
+                    "description":"Smarter Cooking solutions",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }//////
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.446847, 37.733775]
+                },
+                "properties": {
+                    "title": "Ybuy",
+                    "logo":"ybuy.png",
+                    "link":"https://angel.co/ybuy",
+                    "founder":"Stephen Svajian",
+                    "industry":"Consumer Goods",
+                    "description":"Try the best products in the world before you buy",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.446737, 37.733775]
+                },
+                "properties": {
+                    "title": "Telligent Data",
+                    "logo":"Telligent.png",
+                    "link":"https://www.telligentdata.com/",
+                    "founder":"Gene Peters",
+                    "industry":"Saas, Big Data",
+                    "description":"Give analytics teams their jobs back",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.446748, 37.733793]
+                },
+                "properties": {
+                    "title": "Vango",
+                    "logo":"vango.png",
+                    "link":"https://www.vangoart.co/",
+                    "founder":"Win Raguini",
+                    "industry":"E-commerce",
+                    "description":"Fastest growing marketplace for original art",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.446749, 37.733794]
+                },
+                "properties": {
+                    "title": "Laugh.ly",
+                    "logo":"laughly.png",
+                    "link":"http://www.laughradio.com/",
+                    "founder":"Dave Scott",
+                    "industry":"Entertainment",
+                    "description":"Streaming app for comedy",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.446747, 37.733793]
+                },
+                "properties": {
+                    "title": "AppBubbl",
+                    "logo":"appbubbl.png",
+                    "link":"https://angel.co/appbubbl",
+                    "founder":"Karl Mattson",
+                    "industry":"Mobile Parenting",
+                    "description":"Parent-defined, kid-safe android app and web browsing.",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.446751, 37.733792]
+                },
+                "properties": {
+                    "title": "SocialTransactions",
+                    "logo":"SocialTransactions.png",
+                    "link":"https://angel.co/socialtransactions",
+                    "founder":"James Schaffer",
+                    "industry":"Social Commerce",
+                    "description":"Shopping-fueled fundraising for nonprofits",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.446767, 37.733895]
+                },
+                "properties": {
+                    "title": "Sports Data Lab",
+                    "logo":"sportsdata.png",
+                    "link":"ttp://www.sportsdatalabs.com/",
+                    "founder":"Alex Davis",
+                    "industry":"Sports, Big Data",
+                    "description":"Data Platform for the Sports Vertical",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.446757, 37.733794]
+                },
+                "properties": {
+                    "title": "Vence",
+                    "logo":"vence.jpg",
+                    "link":"http://vence.io/",
+                    "founder":"Frank C Wooten",
+                    "industry":"Agriculture",
+                    "description":"Wearable tech for livestock, autonomous farm management",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-121.9552, 37.3541]
+                },
+                "properties": {
+                    "title": "TrackPacker-App",
+                    "logo":"trackpacker.png",
+                    "link":"http://www.trackpacker-app.com/",
+                    "founder":"Cameron Nelson",
+                    "industry":"Software",
+                    "description":"A travel experience recording and sharing mobile app",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.3321, 47.6062]
+                },
+                "properties": {
+                    "title": "lab628",
+                    "logo":"lab628.jpg",
+                    "link":"http://www.lab628.com/",
+                    "founder":"Alex Davis",
+                    "industry":"Saas Applications Platform",
+                    "description":"Enables real-time data-centric communication between businesses and their end clients",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-77.009003, 38.889931]
+                },
+                "properties": {
+                    "title": "CandyJar",
+                    "logo":"candyjar.png",
+                    "link":"https://www.candyjar.com/",
+                    "founder":"Kritika Sharma",
+                    "industry":"E-Commerce",
+                    "description":"Your Online Candy Store",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-77.009013, 38.889932]
+                },
+                "properties": {
+                    "title": "MajorClarity",
+                    "logo":"MajorClarity.png",
+                    "link":"https://www.majorclarity.com/",
+                    "founder":"Joe Belsterling",
+                    "industry":"Edtech",
+                    "description":"Career exploration & academic planning made easy",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-77.009005, 38.889938]
+                },
+                "properties": {
+                    "title": "Power Supply",
+                    "logo":"powersupply.jpg",
+                    "link":"https://www.mypowersupply.com/",
+                    "founder":"Joshua Kriger",
+                    "industry":"Food & Beverage",
+                    "description":"Great food, prepared fresh by local chefs and delivered weekly to fuel your life",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            },{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-76.7075, 37.2707]
+                },
+                "properties": {
+                    "title": "Arcphor",
+                    "logo":"arcphor.jpg",
+                    "link":"http://www.arcphor.com/",
+                    "founder":"Tim Ryan",
+                    "industry":"Enterprise Security",
+                    "description":"Business Development Execution and Brand Image",
+                    "icon": "marker",
+                    "marker-color":"#3bb2d0"
+                }
+            }
+            ]
+};
+
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+  .setLngLat(marker.geometry.coordinates)
+  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+  .setHTML("<img src='assets/img/alumni/" + marker.properties.logo + "' width='45px'><h2>" + marker.properties.title + '</h2><p><b>Founder(s):</b> ' + marker.properties.founder + '</p><p><b>Industry:</b> '+marker.properties.industry + '<p><b>Description:</b> ' + marker.properties.description + "</p><b><a id='more' target='_blank' href='"+marker.properties.link+"'> Learn more</a>" ))
+  .addTo(map);
+});
+
+</script>
+
+</body>
+</html>

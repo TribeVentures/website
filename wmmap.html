@@ -804,7 +804,15 @@
 			            "text-anchor": "top"
 			        }
 			    });
+				map.on('click', 'points', function (e) {
+			        new mapboxgl.Popup()
+			            .setLngLat(e.features[0].geometry.coordinates)
+			            .setHTML(e.features[0].properties.title)
+			            .addTo(map);
+			    });
 			});
+			
+
 			</script>
 		<!--  Google Analytics Tracking 
 		<script>"text-field": "{title}",
